@@ -5,9 +5,9 @@ module.exports = class DepthCalculator {
     // if (Array.isArray(arr)) return 1 + Math.max(arr.map(t => calculateDepth(t)));
     // else return 0;
 
-    return 1 + (arr instanceof Array ? arr.reduce(function(max, item) {
-      return Math.max(max, test(item));
-    }, 0) : -1);
+    // return 1 + (arr instanceof Array ? arr.reduce(function(max, item) {
+    //   return Math.max(max, test(item));
+    // }, 0) : -1);
 
     // let i = 0;
     // while(array.length){
@@ -19,5 +19,8 @@ module.exports = class DepthCalculator {
     // }
     // return i;
 
+    const getMaxDepth = arr => Array.isArray(arr)? 1 + Math.max(0, ...arr.map(getMaxDepth)) : 0;
+    return getMaxDepth(arr);
+    
   }
 };
